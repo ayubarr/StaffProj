@@ -1,11 +1,12 @@
-﻿using StaffProj.Domain.Models.Enums;
+﻿using StaffProj.ApiModels.DTOs.BaseDTOs;
+using StaffProj.Domain.Models.Enums;
 
 namespace StaffProj.ApiModels.DTOs.Employee
 {
     /// <summary>
     /// Data Transfer Object (DTO) class for representing an employee.
     /// </summary>
-    public class EmployeeDTO
+    public class EmployeeDTO : ApplicationUserDTO
     {
         /// <summary>
         /// Employee Id

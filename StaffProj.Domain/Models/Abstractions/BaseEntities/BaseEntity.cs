@@ -3,7 +3,7 @@
     /// <summary>
     /// Base entity class with a unique identifier.
     /// </summary>
-    public class BaseEntity
+    public abstract class BaseEntity
     {
         /// <summary>
         /// identifier of the entity

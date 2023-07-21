@@ -7,12 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\StaffProj.ApiModels\StaffProj.ApiModels.csproj" />
     <ProjectReference Include="..\StaffProj.Domain\StaffProj.Domain.csproj" />
-    <ProjectReference Include="..\StaffProj.ValidationHelper\StaffProj.ValidationHelper.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
   </ItemGroup>
 
 </Project>
