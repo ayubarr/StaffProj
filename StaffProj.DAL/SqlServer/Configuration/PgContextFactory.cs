@@ -18,7 +18,7 @@ namespace StaffProj.DAL.SqlServer.Configuration
                 .AddJsonFile("appsettings.json")
                 .Build();
 
-            var connectionString = configuration.GetConnectionString("PgDbContextConnection");
+            var connectionString = configuration.GetConnectionString("ConnectionString");
 
             var optionsBuilder = new DbContextOptionsBuilder<PgDbContext>();
             optionsBuilder.UseNpgsql(connectionString);
