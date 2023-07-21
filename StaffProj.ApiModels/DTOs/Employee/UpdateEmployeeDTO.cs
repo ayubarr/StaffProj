@@ -21,11 +21,11 @@ namespace StaffProj.ApiModels.DTOs.Employee
         /// <summary>
         /// Employee UserName
         /// </summary>
-        public string UserName { get; set; }
+        public string? UserName { get; set; }
         /// <summary>
         /// Gets or sets the email address of the employee.
         /// </summary>
-        public string Email { get; set; }
+        public string? Email { get; set; }
 
     }
 }

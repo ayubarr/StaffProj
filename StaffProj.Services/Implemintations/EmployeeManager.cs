@@ -75,14 +75,14 @@ namespace StaffProj.Services.Implemintations
                 if (employee is null)
                     throw new ArgumentNullException("User Not found");
 
-                employee = MapperHelperForUser<UpdateEmployeeDTO, Employee>.Map(employeeDto);
+                //employee = MapperHelperForUser<UpdateEmployeeDTO, Employee>.Map(employeeDto);
 
-                //employee.Name = employeeDto.Name;
-                //employee.Position = employeeDto.Position;
-                //employee.Age = employeeDto.Age;
-                //employee.Email = employeeDto.Email;
-                //employee.UserName = employeeDto.UserName;
-                    
+                employee.Name = employeeDto.Name;
+                employee.Position = employeeDto.Position;
+                employee.Age = employeeDto.Age;
+                employee.Email = employeeDto.Email;
+                employee.UserName = employeeDto.UserName;
+
                 await _userManager.UpdateAsync(employee);
 
                 return ResponseFactory<bool>.CreateSuccessResponse(true);

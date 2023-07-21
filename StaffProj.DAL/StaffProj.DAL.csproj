@@ -25,6 +25,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\StaffProj.Domain\StaffProj.Domain.csproj" />
+    <ProjectReference Include="..\StaffProj.ValidationHelper\StaffProj.ValidationHelper.csproj" />
   </ItemGroup>
 
 </Project>
