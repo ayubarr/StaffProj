@@ -1,12 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace StaffProj.ApiModels.Auth.Models
+﻿namespace StaffProj.ApiModels.Auth.Models
 {
-    internal class TokenModel
+    /// <summary>
+    /// Model class representing a token.
+    /// It includes properties for the access token and the refresh token.
+    /// </summary>
+    public class TokenModel
     {
+        /// <summary>
+        /// Gets or sets the access token.
+        /// Nullable property.
+        /// </summary>
+        public string? AccessToken { get; set; }
+
+        /// <summary>
+        /// Gets or sets the refresh token.
+        /// Nullable property.
+        /// </summary>
+        public string? RefreshToken { get; set; }
     }
 }

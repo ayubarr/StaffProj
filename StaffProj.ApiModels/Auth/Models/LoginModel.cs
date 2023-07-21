@@ -1,12 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace StaffProj.ApiModels.Auth.Models
 {
-    internal class LoginModel
+    /// <summary>
+    /// Model class representing the login information for a user.
+    /// It includes properties for the username and password.
+    /// </summary>
+    public class LoginModel
     {
+        /// <summary>
+        /// Gets or sets the user name.
+        /// Nullable property.
+        /// </summary>
+        [Required(ErrorMessage = "User Name is required")]
+        public string? Username { get; set; }
+
+        /// <summary>
+        /// Gets or sets the password.
+        /// Nullable property.
+        /// </summary>
+        [Required(ErrorMessage = "Password is required")]
+        public string? Password { get; set; }
     }
 }
