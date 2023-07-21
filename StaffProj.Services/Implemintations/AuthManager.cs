@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
 using StaffProj.ApiModels.Auth.Models;
 using StaffProj.ApiModels.Reponse.Helpers;
 using StaffProj.ApiModels.Reponse.Interfaces;
@@ -8,14 +9,10 @@ using StaffProj.Domain.Models.Entities;
 using StaffProj.Domain.Models.Enums;
 using StaffProj.Services.Interfaces;
 using StaffProj.ValidationHelper;
-using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace StaffProj.Services.Implemintations
 {
@@ -60,10 +57,6 @@ namespace StaffProj.Services.Implemintations
                         if (userRole == Roles.Manager.ToString())
                         {
                             authClaims.Add(new Claim(ClaimTypes.Role, "Manager"));
-                        }
-                        if (userRole == Roles.Supervisor.ToString())
-                        {
-                            authClaims.Add(new Claim(ClaimTypes.Role, "Supervisor"));
                         }
                         if (userRole == Roles.Admin.ToString())
                         {
@@ -375,7 +368,6 @@ namespace StaffProj.Services.Implemintations
                 throw new SecurityTokenException("Invalid token");
 
             return principal;
-
         }
     }
 }
