@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
+using StaffProj.API.Logs;
 using StaffProj.DAL.SqlServer;
 using StaffProj.Domain.Models.Abstractions.BaseUsers;
 using StaffProj.Domain.Models.Entities;

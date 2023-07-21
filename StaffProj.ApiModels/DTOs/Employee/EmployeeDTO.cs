@@ -23,7 +23,7 @@ namespace StaffProj.ApiModels.DTOs.Employee
         /// <summary>
         /// Gets or sets Age of the employee.
         /// </summary>
-        public int Age { get; set; }
+        public uint Age { get; set; }
 
 
         /// <summary>

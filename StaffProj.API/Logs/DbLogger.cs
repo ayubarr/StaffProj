@@ -1,4 +1,5 @@
 ﻿using Microsoft.Data.SqlClient;
+using Npgsql;
 using System.Diagnostics.CodeAnalysis;
 
 namespace StaffProj.API.Logs
@@ -57,15 +58,15 @@ namespace StaffProj.API.Logs
             var threadId = Thread.CurrentThread.ManagedThreadId; // Get the current thread ID to use in the log file. 
 
             // Store record.
-            using (var connection = new SqlConnection(_dbLoggerProvider.Options.ConnectionString))
+            using (var connection = new NpgsqlConnection(_dbLoggerProvider.Options.ConnectionString))
             {
                 connection.Open();
 
-                using (var command = new SqlCommand())
+                using (var command = new NpgsqlCommand())
                 {
                     command.Connection = connection;
                     command.CommandType = System.Data.CommandType.Text;
-                    command.CommandText = string.Format("INSERT INTO {0} ([Id], [LogLevel], [ThreadId], [EventId], [EventName], [Message], [ExceptionMessage], [ExceptionSource], [ExceptionStackTrace])" +
+                    command.CommandText = string.Format("INSERT INTO {0} (\"Id\", \"LogLevel\", \"ThreadId\", \"EventId\", \"EventName\", \"Message\", \"ExceptionMessage\", \"ExceptionSource\", \"ExceptionStackTrace\")" +
                         " VALUES (@Id, @LogLevel, @ThreadId, @EventId, @EventName, @Message, @ExceptionMessage, @ExceptionSource, @ExceptionStackTrace)",
                         _dbLoggerProvider.Options.LogTable);
 
@@ -86,13 +87,13 @@ namespace StaffProj.API.Logs
             }
         }
 
-        private SqlParameter MakeParam(string key, object value)
+        private NpgsqlParameter MakeParam(string key, object value)
         {
             if (value == null)
             {
                 value = DBNull.Value;
             }
-            SqlParameter param = new SqlParameter(key, value);
+            NpgsqlParameter param = new NpgsqlParameter(key, value);
 
             return param;
         }
