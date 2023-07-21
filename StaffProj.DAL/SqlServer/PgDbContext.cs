@@ -26,5 +26,8 @@ namespace StaffProj.DAL.SqlServer
             builder.ApplyConfigurationsFromAssembly(typeof(ApplicationUserConfig).Assembly);
 
         }
+
+
+
     }
 }

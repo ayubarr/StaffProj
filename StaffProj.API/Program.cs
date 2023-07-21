@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using Npgsql;
 using StaffProj.API;
 using StaffProj.DAL.SqlServer;
 
@@ -13,6 +14,8 @@ builder.Services.AddDbContext<PgDbContext>(options => options.UseNpgsql(connecti
 {
     sqlOptions.EnableRetryOnFailure();
 }));
+
+
 builder.Services
     .InitializeIdentity(configuration)
     .InitializeRepositories()

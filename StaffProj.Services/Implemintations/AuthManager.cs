@@ -71,7 +71,7 @@ namespace StaffProj.Services.Implemintations
                     if (int.TryParse(_configuration["JWT:RefreshTokenValidityInDays"], out int refreshTokenValidityInDays))
                     {
                         user.RefreshToken = refreshToken;
-                        user.RefreshTokenExpiryTime = DateTime.Now.AddDays(refreshTokenValidityInDays);
+                        user.RefreshTokenExpiryTime = DateTime.UtcNow.AddDays(refreshTokenValidityInDays);
 
                         await _userManager.UpdateAsync(user);
                         string userId = user.Id;
@@ -242,7 +242,7 @@ namespace StaffProj.Services.Implemintations
 
                 var user = await _userManager.FindByNameAsync(username);
 
-                if (user == null || user.RefreshToken != refreshToken || user.RefreshTokenExpiryTime <= DateTime.Now)
+                if (user == null || user.RefreshToken != refreshToken || user.RefreshTokenExpiryTime <= DateTime.UtcNow)
                 {
                     throw new UnauthorizedAccessException("Invalid access token or refresh token");
                 }

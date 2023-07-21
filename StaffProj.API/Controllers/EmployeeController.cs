@@ -71,7 +71,18 @@ namespace StaffProj.API.Controllers
         public async Task<IActionResult> Get(string id)
         {
             var response = await _employeeService.GetByIdAsync(id);
-            return Ok(response.Data);
+
+            var employeeDto =  new EmployeeDTO
+            {
+                Id = response.Data.Id,
+                Name = response.Data.Name,
+                Position = response.Data.Position,
+                Age = response.Data.Age,
+                UserName = response.Data.UserName,
+                Email = response.Data.Email,
+            };
+
+            return Ok(employeeDto);
         }
 
         [Authorize(AuthenticationSchemes = "Bearer", Roles = "Admin")]
@@ -127,7 +138,7 @@ namespace StaffProj.API.Controllers
         }
 
         [Authorize(AuthenticationSchemes = "Bearer", Roles = "Admin")]
-        [HttpGet("checkUserRole/{userId}/{roleType}")]
+        [HttpGet("check-role/{userId}/{roleType}")]
         public async Task<IActionResult> CheckUserRole(string userId, Roles roleType)
         {
             var response = await _employeeService.CheckUserRole(userId, roleType);
@@ -144,7 +155,7 @@ namespace StaffProj.API.Controllers
 
         [Authorize(AuthenticationSchemes = "Bearer", Roles = "Admin")]
         [HttpPut]
-        [Route("putRoleById/{userId}/{roleType}")]
+        [Route("put-role/{userId}/{roleType}")]
         public async Task<IActionResult> PutRoleById(string userId, Roles roleType)
         {
             var response = await _employeeService.SetEmployeeNewRoleByIdAsync(userId, roleType);
